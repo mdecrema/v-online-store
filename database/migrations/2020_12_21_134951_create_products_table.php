@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->float('amount', 6, 2);
             $table->SmallInteger('availability');
             $table->SmallInteger('valutazione');
+            $table->SmallInteger('cartItem')->default(0);
 
             $table->timestamps();
         });

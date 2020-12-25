@@ -41,10 +41,26 @@
                         <li>
                             <a href="{{ route('hoodies.index') }}">Hoodies</a>
                         </li>
+                        <li>
+                            <a href="#">Pants</a>
+                         </li>
+                         <li>
+                             <a href="#">Sneakers</a>
+                         </li>
+                         <li>
+                            <a href="#">News</a>
+                         </li>
+                         <li>
+                             <a href="#">Contacts</a>
+                         </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Cart Icon -->
+                        <li>
+                            @include('header_cart')
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -82,6 +98,22 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="contacts col-lg-5">
+                        contacts
+                    </div>
+                    <div class="links col-lg-4">
+                        links
+                    </div>
+                    <div class="social col-lg-3">
+                        social
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

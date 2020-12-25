@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
 
-class TshirtController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class TshirtController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-
-        return view('/tshirt', compact('products'));
+        return view('cart');
     }
 
     /**
@@ -37,7 +34,10 @@ class TshirtController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cart::add($request->id, $request->nome, 1, $request->amount)
+            ->associate('App\Product');
+
+        return redirect()->route('cart.index');
     }
 
     /**
@@ -48,9 +48,7 @@ class TshirtController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id); 
-        
-        return view("item-details", ["product" => $product]);
+        //
     }
 
     /**
@@ -86,5 +84,4 @@ class TshirtController extends Controller
     {
         //
     }
-
 }
