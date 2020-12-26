@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Product;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -33,11 +36,11 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         Cart::add($request->id, $request->nome, 1, $request->amount)
             ->associate('App\Product');
 
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success_message', 'Item was added to your cart!');
     }
 
     /**
