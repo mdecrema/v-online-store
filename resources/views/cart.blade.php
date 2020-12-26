@@ -27,16 +27,29 @@
                 @foreach( Cart::content() as $item )
 
                     <div class="col-lg-12">
+                        <img id="" src="" alt="item-pitcure" />
                         <h4>{{$item->model->nome}}</h4>
                         <span>{{$item->model->amount}}</span>
-                        <span>{{$item->model->quantity}}</span>
+                        <select class="quantity">
+                            <option selected="">1</option>
+                            <option>2</option>
+                            <option>3</option> 
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+
+                        <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="cart-option">Remove Item</button>
+                        </form>
                     </div>
                 <?php $total += $item->model->amount * $item->model->quantity ?>
 
                 @endforeach
                 
                 <div class="total">
-                    <h3>Total: € {{$total}}</h3>
+                    <h3>Total: € {{Cart::total()}}</h3>
                 </div>
 
             @else
