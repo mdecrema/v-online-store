@@ -36,5 +36,5 @@ Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy')
 
 // Check-out 
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-Route::post('/checkout','CheckoutController@checkout');
+Route::post('/orderCompleted','CheckoutController@checkout')->name('checkout.checkout');
 Route::post('/success','CheckoutController@afterpayment')->name('checkout.credit-card');
