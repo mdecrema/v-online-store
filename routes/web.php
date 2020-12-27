@@ -19,12 +19,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Landing Page
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Products
 Route::resource('/tshirt', 'TshirtController');
 Route::resource('/hoodies', 'HoodiesController');
+
+// Product Show 
+Route::get('/product/show/{id}', 'TshirtController@show')->name('item-details');
+
+// Cart
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 
-Route::get('/product/show/{id}', 'TshirtController@show')->name('item-details');
+// Check-out 
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');

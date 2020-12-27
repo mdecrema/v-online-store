@@ -18,6 +18,7 @@
                 @method('POST')
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <input type="hidden" name="nome" value="{{ $product->nome }}">
+                <input type="hidden" name="taglia" value="{{ $product->taglia }}">
                 <input type="hidden" name="amount" value="{{ $product->amount }}">
                 <button type="submit" class="btn btn-holder btn-warning">Add to Cart</button>
             </form>

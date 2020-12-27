@@ -29,7 +29,7 @@
                     <div class="col-lg-12">
                         <img id="" src="" alt="item-pitcure" />
                         <h4>{{$item->model->nome}}</h4>
-                        <span>{{$item->model->amount}}</span>
+                        <span>{{$item->model->taglia}}</span>
                         <select class="quantity">
                             <option selected="">1</option>
                             <option>2</option>
@@ -37,6 +37,7 @@
                             <option>4</option>
                             <option>5</option>
                         </select>
+                        <span>{{$item->model->amount}}</span>
 
                         <form action="{{ route('cart.destroy', $item->rowId) }}" method="POST">
                             @csrf
@@ -50,6 +51,10 @@
                 
                 <div class="total">
                     <h3>Total: € {{Cart::total()}}</h3>
+                    <a href="{{ route('checkout.index') }}" class="">Check-out</a>
+                </div>
+                <div class="">
+                    <a href="{{ url('/') }}">Continue Shopping</a>
                 </div>
 
             @else
